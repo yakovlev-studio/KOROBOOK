@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native'
 
 import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates'
-import { slideHeight, slideWidth } from '../FotoSpreadsSlider/FotoSpread/FotoSpread.style'
+import { slideHeight, slideWidth } from 'korobook/components/Products/FotoBook/FotoSpreadsSlider/FotoSpread/FotoSpread.style'
 
 const {
     width: viewportWidth, 

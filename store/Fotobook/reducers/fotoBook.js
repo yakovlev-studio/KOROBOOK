@@ -1,12 +1,12 @@
-import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates'
-import { updateObject as updateState } from 'korobook/store/utility'
-import * as actionTypes from '../actions/actionTypes'
-import uuid from 'uuid'
+import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates';
+import { updateObject as updateState } from 'korobook/store/utility';
+import * as actionTypes from '../actions/actionTypes';
+import uuid from 'uuid';
 
-import updateFotosOfActiveFotospread from 'korobook/components/Products/FotoBook/utils/updateFotosOfActiveFotospread'
-import updateTemplateOfFotospread from 'korobook/components/Products/FotoBook/utils/updateTemplateOfFotospread'
+import updateFotosOfActiveFotospread from 'korobook/utils/fotoBook/updateFotosOfActiveFotospread';
+import updateTemplateOfFotospread from 'korobook/utils/fotoBook/updateTemplateOfFotospread';
 
-import updateFotospreadLayout from 'korobook/components/Products/FotoBook/utils/updateFotospreadLayout'
+import updateFotospreadLayout from 'korobook/utils/fotoBook/updateFotospreadLayout';
 
 const initialState = {
 

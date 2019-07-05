@@ -4,17 +4,17 @@ import {
     SafeAreaView,
     Animated,
     PanResponder
-} from 'react-native'
+} from 'react-native';
 
-import { connect } from 'react-redux'
-import * as actions from 'korobook/store/Fotobook/actions'
+import { connect } from 'react-redux';
+import * as actions from 'korobook/store/Fotobook/actions';
 
-import FotoSpreadsSlider from './FotoSpreadsSlider/FotoSpreadsSlider'
-import ShuffleButton from './ShuffleButton/ShuffleButton'
-import FotoGalleryButtons from './FotoGallery/FotoGalleryButtons/FotoGalleryButtons'
-import FotoGallery from './FotoGallery/FotoGallery'
+import FotoSpreadsSlider from './FotoSpreadsSlider/FotoSpreadsSlider';
+import ShuffleButton from './ShuffleButton/ShuffleButton';
+import FotoGalleryButtons from './FotoGallery/FotoGalleryButtons/FotoGalleryButtons';
+import FotoGallery from './FotoGallery/FotoGallery';
 
-import styles from './FotoBook.style'
+import styles from './FotoBook.style';
 
 
 class FotoBook extends Component {
