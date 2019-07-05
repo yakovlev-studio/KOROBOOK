@@ -1,15 +1,13 @@
-// Loading Components...
+
 import React, { Component } from 'react';
 import { View, ScrollView, StatusBar, SafeAreaView } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
-import Product from './MainMenuItem/MainMenuItem'
+import Product from './MenuItem/MenuItem';
 
-// Loading Styles...
-import styles from './MainMenuItems.style';
-import { slideHeight } from './MainMenuItem/MenuMenuItem.style';
+import styles from './MenuItems.style';
+import { slideHeight } from './MenuItem/MenuItem.style';
 
-// Loading static data
 import { PRODUCTS } from 'korobook/static/products';
 
 

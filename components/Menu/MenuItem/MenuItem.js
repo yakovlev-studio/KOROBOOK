@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import styles from './MenuMenuItem.style';
+import styles from './MenuItem.style';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
-import {PRODUCTS} from 'korobook/static/products'
+import {PRODUCTS} from 'korobook/static/products';
 
 
 let product = null

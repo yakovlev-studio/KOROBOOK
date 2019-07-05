@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import FontAwesome5, { FA5Style } from 'react-native-vector-icons/FontAwesome5';
 
 // import components
-import Products from 'korobook/components/MainMenu/MainMenuItems'
+import Products from 'korobook/components/Menu/MenuItems'
 
 // import styles
 import styles from './MainMenuScreen.style'
