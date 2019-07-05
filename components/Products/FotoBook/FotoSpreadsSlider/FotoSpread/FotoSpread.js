@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 import FotoFrame from './FotoFrame/FotoFrame'
 import FotoFrameContainer from 'korobook/hoc/FotoFrameContainer'
 import PlusIcon from 'korobook/components/UI/PlusIcon'
-import TestAnimatedImage from './TestAnimatedImage'
+import AnimatedFoto from './AnimatedFoto'
 
 // Styles...
 import styles from './FotoSpread.style'
@@ -61,7 +61,7 @@ export class FotoSpread extends Component {
         if(foto){
             return (
 
-                    <TestAnimatedImage 
+                    <AnimatedFoto 
                         toggleScrollOnFotospreadSlider={this.props.toggleScrollOnFotospreadSlider}
                         foto={foto}
                         indexOfFoto={indexOfFoto}

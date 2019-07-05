@@ -12,7 +12,7 @@ import * as actionCreators from 'korobook/store/Fotobook/actions'
 const DEFAULT_SCALE_VALUE = 1;
 const SPRING_SCALE_VALUE = 1.05;
 
-export class TestAnimatedImage extends Component {
+class AnimatedFoto extends Component {
     constructor(props) {
         super(props) 
       
@@ -141,4 +141,4 @@ const mapDispatchToProps = dispatch => ({
     handleUpdateFotospreadLayout: (offsetCoordinates) => dispatch(actionCreators.updateFotospreadLayout(offsetCoordinates))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestAnimatedImage)
+export default connect(mapStateToProps, mapDispatchToProps)(AnimatedFoto)

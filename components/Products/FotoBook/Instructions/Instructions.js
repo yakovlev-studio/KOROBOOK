@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import { View, Modal, Text } from 'react-native'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { View, Modal, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 // import icons
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 // import styles
-import styles from './Instructions.style'
+import styles from './Instructions.style';
 
 // import Components
 import Button from 'korobook/components/UI/GradientButton';
 
 // import Instructions
-import INSTRUCTIONS from 'korobook/static/photoBookInstructions'
+import INSTRUCTIONS from 'korobook/static/photoBookInstructions';
 
 
 class FotoBookInstructions extends Component {

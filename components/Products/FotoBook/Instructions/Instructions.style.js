@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { colors } from 'korobook/App.style'
+import { StyleSheet } from 'react-native';
+import { colors } from 'korobook/App.style';
 
 export default StyleSheet.create({
     outerContainer: {

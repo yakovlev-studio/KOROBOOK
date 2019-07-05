@@ -1,16 +1,16 @@
-import React from 'react'
-import { View } from 'react-native'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // Custom Components
 import Button from 'korobook/components/UI/GradientButton';
 
 // Styles
-import styles from './ShuffleButton.style'
+import styles from './ShuffleButton.style';
 
 // Action creators
-import * as actionTypes from 'korobook/store/Fotobook/actions/fotoBook'
+import * as actionTypes from 'korobook/store/Fotobook/actions/fotoBook';
 
 
 const ShuffleButton = ({ handleUpdateTemplateOnFotospread=f=>f }) => {

@@ -1,5 +1,5 @@
-import { StyleSheet, Platform } from 'react-native'
-import { viewportHeight, calculatePercentOfTotal } from 'korobook/utils/utils'
+import { StyleSheet, Platform } from 'react-native';
+import { viewportHeight, calculatePercentOfTotal } from 'korobook/utils/utils';
 
 const styles = StyleSheet.create({
     shuffleButtonWrapper: {
