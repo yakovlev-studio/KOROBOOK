@@ -1,27 +1,27 @@
-import React, {Component} from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import styles from './MenuItem.style';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { 
+    View, 
+    Text, 
+    TouchableOpacity, 
+    Image 
+} from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
-import {PRODUCTS} from 'korobook/static/products';
+import { PRODUCTS } from 'korobook/static/products';
+
+import styles from './MenuItem.style';
 
 
 let product = null
 
-export default class Product extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    static propTypes = {
-        data: PropTypes.object.isRequired,
-    };
-
+export default class MenuItem extends Component {
 
     render(){
-        const { data: { title, subtitle, illustration }, activeProductIndex, onProductClicked} = this.props;
-        
-        
+        const { 
+            data: { title, subtitle, illustration }, 
+            activeProductIndex, 
+            onProductClicked
+        } = this.props
         
         if(PRODUCTS[activeProductIndex].title === title) {
             product = (

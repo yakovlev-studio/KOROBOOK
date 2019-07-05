@@ -1,12 +1,11 @@
-import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates';
-import { updateObject as updateState } from 'korobook/store/utility';
-import * as actionTypes from '../actions/actionTypes';
-import uuid from 'uuid';
+import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates'
+import { updateObject as updateState } from 'korobook/store/utility'
+import * as actionTypes from 'korobook/store/Fotobook/actions/actionTypes'
+import uuid from 'uuid'
 
-import updateFotosOfActiveFotospread from 'korobook/utils/fotoBook/updateFotosOfActiveFotospread';
-import updateTemplateOfFotospread from 'korobook/utils/fotoBook/updateTemplateOfFotospread';
-
-import updateFotospreadLayout from 'korobook/utils/fotoBook/updateFotospreadLayout';
+import updateFotosOfActiveFotospread from 'korobook/utils/fotoBook/updateFotosOfActiveFotospread'
+import updateTemplateOfFotospread from 'korobook/utils/fotoBook/updateTemplateOfFotospread'
+import updateFotospreadLayout from 'korobook/utils/fotoBook/updateFotospreadLayout'
 
 const initialState = {
 
@@ -17,7 +16,7 @@ const initialState = {
     topCoordinateOfFloatingFoto: 0,
 
     activeFotoSpread: 0,
-    activeFotoTemplate: 0,
+    activeFotoTemplate: 1,
 
     fotos: [],
     displayFotoGallery: false,
@@ -27,26 +26,27 @@ const initialState = {
     fotoSpreads: [
         {
             id: uuid.v4(),
-            fotoSpreadTemplate: [...fotoSpreadTemplates[0]],
+            fotoSpreadTemplate: fotoSpreadTemplates[1],
             fotos: []
         },
         {
             id: uuid.v4(),
-            fotoSpreadTemplate: [...fotoSpreadTemplates[0]],
+            fotoSpreadTemplate: fotoSpreadTemplates[1],
             fotos: []
         },
         {
             id: uuid.v4(),
-            fotoSpreadTemplate: [...fotoSpreadTemplates[0]],
+            fotoSpreadTemplate: fotoSpreadTemplates[1],
             fotos: []
         },
         {
             id: uuid.v4(),
-            fotoSpreadTemplate: [...fotoSpreadTemplates[0]],
+            fotoSpreadTemplate: fotoSpreadTemplates[1],
             fotos: []
         },
        
     ],
+
 
     // FLatList
     scrollOnFotoGalleryEnabled: true,
@@ -57,6 +57,9 @@ const initialState = {
 
     panResponderActivated: false,
 }
+
+
+
 
 const snapFotoSpread = (state, action) => {
     const updatedProps = {
@@ -73,7 +76,8 @@ const addPickedDeviceFotos = (state, action) => {
         uri: i.path, 
         // width: i.width, 
         // height: i.height, 
-        mime: i.mime
+        mime: i.mime,
+        isFloating: false
     }))
     const updatedProps = {
         fotos: [...state.fotos, ...updatedFotos],
@@ -117,6 +121,8 @@ const updateTemplateOnFotospread = (state) => {
     return updateState(state, updatedProps)
 };
 
+
+
 const updateFotoSpreadFotos = (state, action) => {
     const updatedFotoSpread = updateFotosOfActiveFotospread({...state})
 
@@ -140,6 +146,11 @@ const updateFotoSpreadFotos = (state, action) => {
 
 }
 
+
+
+
+
+
 const updateFloatingfotoCoordinates = (state, action) => {
     const { coords: { leftCoordinateOfFloatingFoto, topCoordinateOfFloatingFoto } } = action
     const updatedProps = {
@@ -151,9 +162,9 @@ const updateFloatingfotoCoordinates = (state, action) => {
 }
 
 const configureFotospreadLayout = (state, action) => {
-    const { xOffset, yOffset } = action
-    const updatedFotoSpread = updateFotospreadLayout({...state}, { xOffset, yOffset })
-    console.log("updatedFotoSpread - ", updatedFotoSpread)
+    const { xOffset, yOffset, indexOfFloatingFoto } = action
+    const updatedFotoSpread = updateFotospreadLayout({...state}, { xOffset, yOffset, indexOfFloatingFoto })
+    // console.log("updatedFotoSpread - ", updatedFotoSpread)
 
     const updatedFotoSpreads = state.fotoSpreads.map(fotoSpread => {
         if(fotoSpread.id === updatedFotoSpread.id){

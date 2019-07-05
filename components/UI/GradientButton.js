@@ -1,7 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  TouchableHighlight 
+} from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import { colors } from 'korobook/App.style'
-import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -10,10 +15,10 @@ const Button = ({ pressed=f=>f, customStyles={}, title="" }) => {
   return ( 
     <View style={styles.buttonContainer}>
         <TouchableHighlight
-          style={[styles.button, customStyles.shuffleButtonSize]}
+          style={[styles.button, customStyles.customButtonSize]}
           onPress={pressed}
         >
-          <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#E65346', '#A354F2']} style={[styles.linearGradient, customStyles.shuffleButtonSize]}>  
+          <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#E65346', '#A354F2']} style={[styles.linearGradient, customStyles.customButtonSize]}>  
             <Text style={[styles.textButton, customStyles.sizeOfTitleOfShuffleButton]}>
                   {title}
             </Text>

@@ -1,4 +1,8 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { 
+    StyleSheet, 
+    Dimensions, 
+    Platform 
+} from 'react-native';
 import { colors } from 'korobook/App.style';
 
 const IS_IOS = Platform.OS === 'ios';
@@ -69,17 +73,17 @@ export default StyleSheet.create({
         borderBottomRightRadius: entryBorderRadius
     },
     textContainerEven: {
-        backgroundColor: colors.black
+        backgroundColor: 'black'
     },
     title: {
-        color: colors.white,
+        color: 'white',
         fontSize: 28,
         fontWeight: 'bold',
         letterSpacing: 0.4
     },
     subtitle: {
         marginTop: 10,
-        color: colors.white,
+        color: 'white',
         fontSize: 15
     }
 });

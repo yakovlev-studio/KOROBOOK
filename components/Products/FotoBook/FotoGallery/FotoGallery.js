@@ -5,12 +5,11 @@ import { connect } from 'react-redux'
 
 import FotoGalleryItem from './FotoGalleryItem/FotoGalleryItem'
 
-export class FotoGallery extends Component {
 
+class FotoGallery extends Component {
     static propTypes = {
         fotoPressed: PropTypes.func,
         fotoLongPressed: PropTypes.func
-
     }
 
     static defaultProps = {
@@ -18,38 +17,53 @@ export class FotoGallery extends Component {
         fotoLongPressed: f=>f
     }
 
+
     _keyExtractor = item => item.key
 
-    _renderFoto = ({item}) => (
-        <FotoGalleryItem 
-            image={item}
-            handleLongPress={this.props.fotoLongPressed}
-            handlePress={this.props.fotoPressed}
-        />
-    ) 
+    _renderItem = ({item, index}) => {
+
+        return (
+            <FotoGalleryItem 
+                key={index}
+                item={item}
+                opacityValue={this.props.opacityValue}
+                handleLongPress={this.props.fotoLongPressed}
+                handlePress={this.props.fotoPressed}
+                index={index}
+                animateFloatingFoto={this.props.animateFloatingFoto}
+                
+            />
+        )
+    }
+ 
     render() {
+    
+        const items = Array.from({ length: 15 }).map((item, index) => {
+            return {...item, ...this.props.fotos[index]}
+        })
+       
         return (
             <View style={styles.galleryListWrapper}>
                 {
                     this.props.panResponderActivated ? (
                         <FlatList
-                            contentContainerStyle={{flex: 1}}
+                            contentContainerStyle={{ flex: 1 }}
                             scrollEnabled={this.props.scrollOnFotoGalleryEnabled}
                             horizontal={true}
                             keyExtractor={this._keyExtractor}
-                            renderItem={this._renderFoto}
-                            data={this.props.fotos}
+                            renderItem={this._renderItem}
+                            data={items}
                             extraData={this.props.fotoBookState}
                             {...this.props.panHandlers}
                         /> 
                     ) : (
                         <FlatList
-                            contentContainerStyle={{flex: 1}}
+                            contentContainerStyle={{ flex: 1 }}
                             scrollEnabled={this.props.scrollOnFotoGalleryEnabled}
                             horizontal={true}
                             keyExtractor={this._keyExtractor}
-                            renderItem={this._renderFoto}
-                            data={this.props.fotos}
+                            renderItem={this._renderItem}
+                            data={items}
                             extraData={this.props.fotoBookState}
                         /> 
                     )
@@ -84,9 +98,6 @@ export const mapStateToProps = ({ fotoBook }) => ({
 
 });
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(FotoGallery)
+export default connect(mapStateToProps)(FotoGallery)
 

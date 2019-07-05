@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 
-// Custom Components
 import FotoGalleryButton from './FotoGalleryButton/FotoGalleryButton'
-
-// Styles
 import styles from './FotoGalleryButtons.style'
 
-class FotoGalleryButtons extends Component {
+
+export default class FotoGalleryButtons extends Component {
 
     render() {
         return (
@@ -20,12 +18,8 @@ class FotoGalleryButtons extends Component {
                     typeOfButton="changeScreen" 
                     icon={{iconName: "check", color: "#fff"}} 
                     style={{ backgroundColor: '#ccc'}} 
-                    pressed={() => this._changeScreenHandler()}
                 />
             </View>
         )
     }
 }
-
-
-export default FotoGalleryButtons

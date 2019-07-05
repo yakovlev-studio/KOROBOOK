@@ -1,30 +1,24 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-// Loading utility functions
 import { viewportHeight, viewportWidth, calculatePercentOfTotal } from 'korobook/utils/utils'
 
 export const slideHeight = viewportHeight * 0.34; 
 export const slideWidth = viewportWidth * 0.9
 
-const imageGalleryHeight = calculatePercentOfTotal(10, viewportHeight)
 const imageGalleryWidth =  calculatePercentOfTotal(80, viewportWidth)
 const addImageButtonWidth = calculatePercentOfTotal(20, viewportWidth)
 
 
- const imageGalleryItemWidth = calculatePercentOfTotal(20, viewportWidth)
+const imageGalleryItemWidth = calculatePercentOfTotal(20, viewportWidth)
 const imageGalleryItemHeight = calculatePercentOfTotal(15, viewportHeight)
-
 
 
 export default StyleSheet.create({
     safeArea: {
-        flex: 1,
-        // backgroundColor: colors.black
+        flex: 1
     },
     container: {
-        flex: 1,
-        // backgroundColor: colors.white,
-       
+        flex: 1
     },
     scrollview: {
         flex: 1
@@ -47,7 +41,6 @@ export default StyleSheet.create({
         borderColor: '#ccc'
     },
     addImageButtonWrapper: {
-    
         width: addImageButtonWidth,
         height: "100%",
     },
@@ -61,7 +54,6 @@ export default StyleSheet.create({
        
     },
 
-
     imagesWrapper: {
         flexDirection: "row"
     },
@@ -74,13 +66,14 @@ export default StyleSheet.create({
         top: 0,
         position: "absolute",
         height: 80,
-        width: 80
+        width: 80,
+        zIndex: 100
     },
     galleryListWrapper: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
         height: 80
-    },
+    }
  
 });

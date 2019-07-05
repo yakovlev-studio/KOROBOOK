@@ -1,33 +1,48 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
+const defineStyles = (style) => {
+    const [p1, p2] = style
+    const coordinatesOfFlatSide = (p1 - p2) / 2 // LEFT and TOP
 
-const cross = ({ style={} }) => {
+    return {
+        up: {
+            width: p2,
+            height: p1,
+        },
+        flat: {
+            width: p1,
+            height: p2,
+            left: -coordinatesOfFlatSide,
+            top: coordinatesOfFlatSide
+        }
+        
+        
+    } 
+}
+
+
+export default ({ size=[] }) => {
+    const { up, flat } = defineStyles(size)
     return (
-        <View style={{}}>
-            <View style={[styles.crossUp]} />
-            <View style={[styles.crossFlat]} /> 
+        <View>
+            <View style={[styles.crossUp, up]} />
+            <View style={[styles.crossFlat, flat]} /> 
         </View> 
     )
 } 
 
 
+
 const styles = StyleSheet.create({
     crossUp: {
-        height: 41,
-        width: 1,
         backgroundColor: '#ccc'
     },
     crossFlat: {
-        height: 1,
-        width: 41,
         position: 'absolute',
-        left: -20,
-        top: 20,
         backgroundColor: '#ccc'
     }
 })
 
-export default cross
 
   

@@ -3,8 +3,7 @@ import {
     Animated,
     PanResponder,
     StyleSheet,
-    Easing,
-    TouchableWithoutFeedback 
+    Easing
 } from 'react-native'
 import { connect } from 'react-redux'
 import * as actionCreators from 'korobook/store/Fotobook/actions'
@@ -12,7 +11,7 @@ import * as actionCreators from 'korobook/store/Fotobook/actions'
 const DEFAULT_SCALE_VALUE = 1;
 const SPRING_SCALE_VALUE = 1.05;
 
-class AnimatedFoto extends Component {
+export class TestAnimatedImage extends Component {
     constructor(props) {
         super(props) 
       
@@ -25,12 +24,12 @@ class AnimatedFoto extends Component {
 
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (evt, gestureState) => {
-                // If amount of fotoFrames > 1 => do not set responder
-                const amountOfFotoFrames = this.props.fotoSpreads[this.props.activeFotoSpread].fotoSpreadTemplate.length
-                if(amountOfFotoFrames > 1 ) {
-                    return true
-                }
-                return false
+                // const amountOfFotoFrames = this.props.fotoSpreads[this.props.activeFotoSpread].fotoSpreadTemplate.length
+                // if(amountOfFotoFrames > 1 ) {
+                //     return true
+                // }
+                // return false
+                return true
             },
             onPanResponderGrant: (evt, gestureState) => {
                 this.props.toggleScrollOnFotospreadSlider()
@@ -54,7 +53,7 @@ class AnimatedFoto extends Component {
                 this._handleAnimationOnImage(DEFAULT_SCALE_VALUE)
 
                 this.state.longTouchOnImageOccured ? (
-                    this.props.handleUpdateFotospreadLayout({ xOffset: dx, yOffset: dy }) 
+                    this.props.handleUpdateFotospreadLayout({ xOffset: dx, yOffset: dy, indexOfFloatingFoto: this.props.indexOfFoto }) 
                 ) : null
                 
                 this._positionOfImage.setValue({ x: 0, y: 0})
@@ -75,7 +74,6 @@ class AnimatedFoto extends Component {
 
 
     _handleLongTouchOnImage = () => {
-
         this._handleAnimationOnImage(SPRING_SCALE_VALUE)
         this.setState(() => ({ 
             longTouchOnImageOccured: true
@@ -95,12 +93,7 @@ class AnimatedFoto extends Component {
       }
 
 
-
-
-
     render() {
-
-
         return (
                 <Animated.Image
                     source={{ uri: this.props.foto.uri }}
@@ -131,14 +124,18 @@ const styles = StyleSheet.create({
     },
 })
 
-const mapStateToProps = (state) => ({
-    activeFotoSpread: state.fotoBook.activeFotoSpread,
-    activeFotoTemplate: state.fotoBook.activeFotoTemplate,
-    fotoSpreads: state.fotoBook.fotoSpreads,
-})
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        activeFotoSpread: state.fotoBook.activeFotoSpread,
+        activeFotoTemplate: state.fotoBook.activeFotoTemplate,
+        fotoSpreads: state.fotoBook.fotoSpreads,
+    }
+} 
 
 const mapDispatchToProps = dispatch => ({
-    handleUpdateFotospreadLayout: (offsetCoordinates) => dispatch(actionCreators.updateFotospreadLayout(offsetCoordinates))
+    handleUpdateFotospreadLayout: (props) => dispatch(actionCreators.updateFotospreadLayout(props))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnimatedFoto)
+export default connect(mapStateToProps, mapDispatchToProps)(TestAnimatedImage)
+

@@ -3,18 +3,15 @@ import {
     View,  
     ScrollView
 } from 'react-native'
-import { connect } from 'react-redux'
 
-// Import components
+import Carousel from 'react-native-snap-carousel'
 import FotoSpread from './FotoSpread/FotoSpread'
 
-// Action creators
+// Redux
+import { connect } from 'react-redux'
 import * as actions from 'korobook/store/Fotobook/actions'
 
-// Import third-party libraries...
-import Carousel from 'react-native-snap-carousel'
-
-// Importing styles...
+// Styles
 import styles from './FotoSpreadsSlider.style'
 import { slideHeight } from './FotoSpread/FotoSpread.style'
 
@@ -54,9 +51,6 @@ export class FotoSpreadsSlider extends Component {
               containerCustomStyle={styles.slider}
               vertical={true}
               onSnapToItem={(index) =>  this.props.handleSnapFotoSpread(index)}
-
-
-              // contentContainerCustomStyle={styles.sliderContentContainer}
             />
         </View>
 )}
@@ -82,7 +76,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-handleSnapFotoSpread: (indexOfFotoSpread) => dispatch(actions.snapFotoSpread(indexOfFotoSpread))
+  handleSnapFotoSpread: (indexOfFotoSpread) => dispatch(actions.snapFotoSpread(indexOfFotoSpread))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FotoSpreadsSlider)

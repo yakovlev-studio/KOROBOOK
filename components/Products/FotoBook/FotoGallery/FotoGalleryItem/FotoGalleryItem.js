@@ -1,32 +1,63 @@
 import React from 'react';
-import { 
-    View, 
+import {  
     StyleSheet, 
-    Image,
     Animated,
-    TouchableWithoutFeedback
-} from 'react-native';
+    TouchableWithoutFeedback,
+    Easing,
+    View
+} from 'react-native'
+import { connect } from 'react-redux'
 
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableWithoutFeedback);
 
-export default class ImageGalleryItem extends React.Component {
+class ImageGalleryItem extends React.Component {
+
     state = {
-        longPressed: false
+        longPressed: false,
+        doFadeOut: false,
     }
 
+    fade = new Animated.Value(1)
+
+    _transition = () => {
+        this.fade.setValue(1)
+        Animated.parallel([
+            Animated.spring(
+                this.fade,           
+                {
+                    toValue: 0,                   
+                    friction: 10,
+                    easing: Easing.ease              
+                }
+            ),
+            this.props.animateFloatingFoto()
+        ]).start()
+    }
+
+    _handleLongPress = (event, image) => {
+        this.props.handleLongPress(event, image)
+        this._transition()
+    }
+
+
     render() {
-        const { image, handleLongPress, handlePress, opacityValue=1 }  = this.props
+        const { item, handlePress }  = this.props
 
         return (
             <AnimatedTouchable
                 onLongPress={(event) => {
                     this.setState({ longPressed: true })
-                    handleLongPress(event, image)
+                    this._handleLongPress(event, item)
                 }}
-                onPressIn={(event) => handlePress(event, image)}
+                onPressIn={(event) => handlePress(event, item)}
             >
-                <Animated.Image style={{ width: 80, height: 80, opacity: this.state.longPressed ? opacityValue : 1}} source={{ uri: image.uri }} /> 
+                <View style={styles.itemWrapper}>
+                    <Animated.Image style={[
+                            { width: 80, height: 80, opacity: this.fade }
+                        ]} source={{ uri: item.uri }} /> 
+                </View>
+                
             </AnimatedTouchable>
             
         )
@@ -40,10 +71,18 @@ const styles = StyleSheet.create({
         height: 80,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#777',
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRightWidth: 0
     },
     image: {
         resizeMode: "cover",
         ...StyleSheet.absoluteFillObject,
     }
 })
+
+const mapStateToProps = (state) => ({
+    selectedFoto: state.fotoBook.selectedFoto
+})
+
+export default connect(mapStateToProps)(ImageGalleryItem)

@@ -3,30 +3,36 @@ import {
     View,  
     SafeAreaView,
     Animated,
-    PanResponder
-} from 'react-native';
+    PanResponder,
+    Easing
+} from 'react-native'
 
-import { connect } from 'react-redux';
-import * as actions from 'korobook/store/Fotobook/actions';
+// Redux
+import { connect } from 'react-redux'
+import * as actions from 'korobook/store/Fotobook/actions'
 
-import FotoSpreadsSlider from './FotoSpreadsSlider/FotoSpreadsSlider';
-import ShuffleButton from './ShuffleButton/ShuffleButton';
-import FotoGalleryButtons from './FotoGallery/FotoGalleryButtons/FotoGalleryButtons';
-import FotoGallery from './FotoGallery/FotoGallery';
+// Components
+import FotoSpreadsSlider from './FotoSpreadsSlider/FotoSpreadsSlider'
+import ShuffleButton from './ShuffleButton/ShuffleButton'
+import FotoGalleryButtons from './FotoGallery/FotoGalleryButtons/FotoGalleryButtons'
+import FotoGallery from './FotoGallery/FotoGallery'
 
-import styles from './FotoBook.style';
+// Styles
+import styles from './FotoBook.style'
+
 
 
 class FotoBook extends Component {
 
+    componentDidMount(){
+        console.log(this.props.fotoBookState)
+    }
     componentDidUpdate(){
         console.log(this.props.fotoBookState)
     }
   
-    state = {
-        fadeIn: new Animated.Value(0),
-        fadeOut: new Animated.Value(1),
-    }
+    floatingFotoSpringValue = new Animated.Value(1)
+    fade = new Animated.Value(1)
     
     x0 = 0;
     y0 = 0;
@@ -40,7 +46,15 @@ class FotoBook extends Component {
             <Animated.Image
                 style={[
                     styles.floatingFoto,
-                    { top: this.y0, left: this.x0,  zIndex: 300 }
+                    { 
+                        top: this.y0, 
+                        left: this.x0,
+                        transform: [
+                            {
+                                scale: this.floatingFotoSpringValue
+                            }
+                        ]
+                    }
                 ]}
                 ref={floating => {
                     this.floating = floating;
@@ -48,6 +62,17 @@ class FotoBook extends Component {
                 source={{ uri: this.props.selectedFoto.uri }}
             />
         );
+    }
+
+    _animateFloatingFoto = (animatedValue=this.floatingFotoSpringValue, toValue=1.1) => {
+        Animated.spring(
+            animatedValue,
+            {
+                toValue: toValue,
+                bounciness: 12,
+                easing: Easing.bounce
+            }
+        ).start()
     }
 
     _updateNativeStyles = () => {
@@ -66,8 +91,9 @@ class FotoBook extends Component {
 
    
     _handleLongPress = (event) =>  {
-        this.props.handleActivatePanresponderOnSelectedFoto(event.nativeEvent)               
+        this.props.handleActivatePanresponderOnSelectedFoto(event.nativeEvent)           
     }
+
 
    
     _panResponder = PanResponder.create({
@@ -76,7 +102,6 @@ class FotoBook extends Component {
         onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
         onMoveShouldSetPanResponder: (evt, gestureState) => true,
         onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
-
 
         onPanResponderMove: (event) => {
             this.x0 = event.nativeEvent.pageX - 50;
@@ -90,6 +115,7 @@ class FotoBook extends Component {
         },
        
         onPanResponderRelease: () => {
+            this.floatingFotoSpringValue.setValue(0)
             this.props.handleUpdateFotoSpreadFotos()
             this.x0 = 0
             this.y0 = 0
@@ -98,17 +124,10 @@ class FotoBook extends Component {
     })
    
     render(){
-
-        // const fotosAttachedToActiveFotoSpread = this.props.fotoSpreads[this.props.activeFotoSpread].fotos.map(foto => renderDroppedFloatingFoto(foto))
-
         return (
             <SafeAreaView style={styles.safeArea}>
                 <View style={styles.container}>
-{/* 
-                    {
-                       this.props.displayFloatingFotos && fotosAttachedToActiveFotoSpread
-                    } */}
-              
+
                     <FotoSpreadsSlider />
                     <ShuffleButton />
 
@@ -116,7 +135,8 @@ class FotoBook extends Component {
                         fotoPressed={this._handlePress}
                         fotoLongPressed={this._handleLongPress}
                         panHandlers={this._panResponder.panHandlers}
-                    
+                        opacityValue={this.fade}
+                        animateFloatingFoto={this._animateFloatingFoto}
                     />
 
                     <FotoGalleryButtons />

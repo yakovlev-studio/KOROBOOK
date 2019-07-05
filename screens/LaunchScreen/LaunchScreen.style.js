@@ -1,13 +1,15 @@
-import { StyleSheet } from 'react-native';
-import { colors } from 'korobook/App.style';
+import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: colors.white
+        backgroundColor: 'white'
     },
     container: {
         flex: 1,
         paddingBottom: 0
+    },
+    button: {
+        borderRadius: 40
     }
 })

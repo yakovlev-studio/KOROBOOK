@@ -38,6 +38,7 @@ export default class LaunchScreen extends Component {
                     <Button 
                         pressed={() => this.navigateToMainMenuScreen()}
                         title="Создать фотокнигу"
+                        customStyles={{customButtonSize: styles.button}}
                     />
                 </View>
             </SafeAreaView>

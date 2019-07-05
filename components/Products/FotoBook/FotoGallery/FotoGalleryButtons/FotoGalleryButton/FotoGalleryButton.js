@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { 
     TouchableOpacity, 
     View, 
     Image
-} from 'react-native';
+} from 'react-native'
 
 // Third-party libraries
 import { connect } from 'react-redux'
-import FontAwesome5, { FA5Style } from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome5, { FA5Style } from 'react-native-vector-icons/FontAwesome5'
 import ImagePicker from 'react-native-image-crop-picker'
 
 // Styles
@@ -65,7 +65,6 @@ class ImageGalleryButton extends Component {
     
 
     render() {
-       
         return (
             <TouchableOpacity onPress={this._handleFotoGalleryButtonPressed} style={[styles.galleryButtonWrapper, this.props.style]}>
                 <View>
@@ -77,15 +76,12 @@ class ImageGalleryButton extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-
-})
 
 const mapDispatchToProps = dispatch => ({
     handleAddPickedDeviceImages: (fotos) => dispatch(actions.addPickedDeviceImages(fotos))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageGalleryButton)
+export default connect(null, mapDispatchToProps)(ImageGalleryButton)
 
 
 
