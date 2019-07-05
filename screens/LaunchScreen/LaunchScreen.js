@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { View, SafeAreaView, Image } from 'react-native';
 import styles from './LaunchScreen.style';
 
-// Componenets
-import Slider from 'korobook/components/Slider/Slider'
-import Button from 'korobook/components/Button';
+import Slider from 'korobook/components/Slider/Slider';
+import Button from 'korobook/components/UI/GradientButton';
 
 export default class LaunchScreen extends Component {
     constructor(props){

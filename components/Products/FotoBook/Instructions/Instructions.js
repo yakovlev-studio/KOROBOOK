@@ -9,7 +9,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './Instructions.style'
 
 // import Components
-import Button from 'korobook/components/Button'
+import Button from 'korobook/components/UI/GradientButton';
 
 // import Instructions
 import INSTRUCTIONS from 'korobook/static/photoBookInstructions'

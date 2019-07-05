@@ -13,7 +13,7 @@ import PropTypes from 'prop-types'
 // Custom Components
 import FotoFrame from './FotoFrame/FotoFrame'
 import FotoFrameContainer from 'korobook/hoc/FotoFrameContainer'
-import PlusIcon from 'korobook/components/Shapes/Cross'
+import PlusIcon from 'korobook/components/UI/PlusIcon'
 import TestAnimatedImage from './TestAnimatedImage'
 
 // Styles...

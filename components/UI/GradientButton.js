@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
-import { colors } from '../App.style'
+import { colors } from 'korobook/App.style'
 import LinearGradient from 'react-native-linear-gradient';
 
 

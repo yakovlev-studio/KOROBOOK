@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 // Custom Components
-import Button from 'korobook/components/Button'
+import Button from 'korobook/components/UI/GradientButton';
 
 // Styles
 import styles from './ShuffleButton.style'
