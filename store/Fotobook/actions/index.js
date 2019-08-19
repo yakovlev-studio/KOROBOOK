@@ -5,7 +5,7 @@ export {
     activatePanresponderOnSelectedFoto,
     setInitialCoordinatesForFloatingFoto,
     updateTemplateOnFotospread,
-    updateFotoSpreadFotos,
+    updateFotosOfFotospread,
     updateFloatingfotoCoordinates,
     updateFotospreadLayout
 } from './fotoBook'

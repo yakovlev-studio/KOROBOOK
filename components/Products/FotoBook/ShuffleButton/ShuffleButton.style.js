@@ -1,5 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
-import { viewportHeight, calculatePercentOfTotal } from 'korobook/utils/utils';
+import { calculatePercentOfTotal } from 'korobook/utils/utils';
+import { viewportHeight } from 'korobook/components/Products/FotoBook/FotoSpreadsSlider/FotoSpread/FotoSpread.style';
 
 const styles = StyleSheet.create({
     shuffleButtonWrapper: {

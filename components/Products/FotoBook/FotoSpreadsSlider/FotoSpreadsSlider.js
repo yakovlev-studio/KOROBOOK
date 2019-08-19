@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { 
     View,  
     ScrollView
-} from 'react-native'
+} from 'react-native';
 
-import Carousel from 'react-native-snap-carousel'
-import FotoSpread from './FotoSpread/FotoSpread'
+import Carousel from 'react-native-snap-carousel';
+import FotoSpread from './FotoSpread/FotoSpread';
 
 // Redux
-import { connect } from 'react-redux'
-import * as actions from 'korobook/store/Fotobook/actions'
+import { connect } from 'react-redux';
+import * as actions from 'korobook/store/Fotobook/actions';
 
 // Styles
-import styles from './FotoSpreadsSlider.style'
-import { slideHeight } from './FotoSpread/FotoSpread.style'
+import styles from './FotoSpreadsSlider.style';
+import { slideHeight } from './FotoSpread/FotoSpread.style';
 
 
 let FIRST_SPREAD = 0

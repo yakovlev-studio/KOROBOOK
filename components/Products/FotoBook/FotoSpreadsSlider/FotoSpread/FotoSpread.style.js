@@ -1,12 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+import { calculatePercentOfTotal } from 'korobook/utils/utils';
 
-import { 
-    viewportWidth, 
-    calculatePercentOfTotal 
-} from 'korobook/utils/utils'
+export const { width: viewportWidth } = Dimensions.get('window');
+export const { height: viewportHeight } = Dimensions.get('window');
+
 
 export const slideHeight = calculatePercentOfTotal(66, viewportWidth); 
-export const slideWidth = calculatePercentOfTotal(90, viewportWidth)
+export const slideWidth = calculatePercentOfTotal(90, viewportWidth);
+
+// Position of an activeSpread on X axios
+export const fotoSpreadX0 = (viewportWidth - slideWidth) / 2;
+export const fotoSpreadX1 = viewportWidth - fotoSpreadX0;
+
+// Position of an activeSpread on Y axios
+export const fotoSpreadY0 = slideHeight * 0.5;
+export const fotoSpreadY1 = fotoSpreadY0 + slideHeight;
+
+export const midpointOfSpread = (fotoSpreadX1 + fotoSpreadX0) / 2;
+
 
 export default StyleSheet.create({
     slideInnerContainer: {
@@ -32,6 +43,5 @@ export default StyleSheet.create({
        height: '100%', 
        flexDirection: 'column'
     },
-
- 
 });
+

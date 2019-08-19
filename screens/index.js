@@ -1,8 +1,8 @@
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
-import configureStore from 'korobook/store/configureStore'
+import { configureStore } from 'korobook/store/configureStore';
 
-const store = configureStore()
+export const store = configureStore()
 
 
 // Register Screens

@@ -9,6 +9,8 @@ import updateFotospreadLayout from 'korobook/utils/fotoBook/updateFotospreadLayo
 
 const initialState = {
 
+    fotoSpread: {},
+
     xAxisOffsetOfAnimatedFotospreadFoto: 0,
     yAxisOffsetOfAnimatedFotospreadFoto: 0,
 
@@ -123,15 +125,17 @@ const updateTemplateOnFotospread = (state) => {
 
 
 
-const updateFotoSpreadFotos = (state, action) => {
-    const updatedFotoSpread = updateFotosOfActiveFotospread({...state})
+const updateFotosOfFotospread = (state, action) => {
 
-    const updatedFotoSpreads = state.fotoSpreads.map(fotoSpread => {
-        if(fotoSpread.id === updatedFotoSpread.id){
-            return {...fotoSpread, fotos: updatedFotoSpread.fotos}
-        }
-        return fotoSpread
-    })
+    // const updatedFotoSpread = updateFotosOfActiveFotospread({...state})
+    console.log(updateFotosOfActiveFotospread())
+
+    // const updatedFotoSpreads = state.fotoSpreads.map(fotoSpread => {
+    //     if(fotoSpread.id === updatedFotoSpread.id){
+    //         return {...fotoSpread, fotos: updatedFotoSpread.fotos}
+    //     }
+    //     return fotoSpread
+    // })
     
     const updatedProps = {
         panResponderActivated: false,
@@ -140,7 +144,7 @@ const updateFotoSpreadFotos = (state, action) => {
         fotos: state.fotos.filter(foto => foto.key !== state.selectedFoto.key),
         displayFloatingFotos: true,
         // fotoSpreads: [...state.fotoSpreads, updatedFotoSpread] 
-        fotoSpreads: updatedFotoSpreads
+        // fotoSpreads: updatedFotoSpreads
     }
     return updateState(state, updatedProps)
 
@@ -191,7 +195,7 @@ export default (state = initialState, action) => {
         case actionTypes.ACTIVATE_PANRESPONDER_ON_SELECTED_FOTO: return activatePanResponder(state, action)
         case actionTypes.SET_INITIAL_COORDINATES_FOR_FLOATING_FOTO: return setCoordinatesForSelectedFoto(state, action)
         case actionTypes.UPDATE_TEMPLATE_ON_FOTOSPREAD: return updateTemplateOnFotospread(state)
-        case actionTypes.UPDATE_FOTOSPREAD_FOTOS: return updateFotoSpreadFotos(state, action)
+        case actionTypes.UPDATE_FOTOS_OF_FOTOSPREAD: return updateFotosOfFotospread(state, action)
         case actionTypes.UPDATE_FLOATING_FOTO_COORDINATES: return updateFloatingfotoCoordinates(state, action)
         case actionTypes.UPDATE_FOTOSPREAD_LAYOUT: return configureFotospreadLayout(state, action)
 

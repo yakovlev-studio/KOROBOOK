@@ -1,133 +1,140 @@
-import { Dimensions } from 'react-native'
-import { slideHeight, slideWidth } from 'korobook/components/Products/FotoBook/FotoSpreadsSlider/FotoSpread/FotoSpread.style'
-import calculateFotoSize from './calculateFotoSize'
-import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates'
+// import calculateFotoSize from './calculateFotoSize'
+// import fotoSpreadTemplates from 'korobook/static/fotoSpreadTemplates'
+
+import { viewportWidth, compose } from '../utils';
+import { 
+        slideHeight, 
+        slideWidth 
+} from 'korobook/components/Products/FotoBook/FotoSpreadsSlider/FotoSpread/FotoSpread.style';
+import { configureStore } from 'korobook/store/configureStore';
 
 
 
+const fetchState = () => {
+        return configureStore().getState()
+}
 
 
-const { width: viewportWidth } = Dimensions.get('window')
-const { height: viewportHeight } = Dimensions.get('window')
-    
-    // Position of an activeSpread on X axios
-    const fotoSpreadX0 = (viewportWidth - slideWidth) / 2
-    const fotoSpreadX1 = viewportWidth - fotoSpreadX0
 
-    // Position of an activeSpread on Y axios
-    const fotoSpreadY0 = slideHeight * 0.5
-    const fotoSpreadY1 = fotoSpreadY0 + slideHeight
+// Position of an activeSpread on X axios
+ const fotoSpreadX0 = (viewportWidth - slideWidth) / 2
+ const fotoSpreadX1 = viewportWidth - fotoSpreadX0
 
-    const midpointOfSpread = (fotoSpreadX1 + fotoSpreadX0) / 2
+// Position of an activeSpread on Y axios
+ const fotoSpreadY0 = slideHeight * 0.5
+ const fotoSpreadY1 = fotoSpreadY0 + slideHeight
 
-    
-/**
- * Обновляет коллекцию фотографии прикрепленные к активному фоторазвороту
- */
-const updateFotosOfActiveFotoSpread = ({
-        fotoSpreads, 
-        activeFotoSpread, 
-        selectedFoto, 
-        activeFotoTemplate,
-        topCoordinateOfFloatingFoto,
-        leftCoordinateOfFloatingFoto,
-}) => {
+ const midpointOfSpread = (fotoSpreadX1 + fotoSpreadX0) / 2
+
+
+
+ const convertPercentToDecimal = (percent) => {
         
+        return parseFloat(percent) / 100.0;
+ } 
         
-        // console.log("fotoSpreadX0", fotoSpreadX0);
-        // console.log("fotoSpreadX1", fotoSpreadX1);
-        // console.log("fotoSpreadY0", fotoSpreadY0);
-        // console.log("fotoSpreadY1", fotoSpreadY1);
-        // console.log("leftCoordinateOfFloatingFoto", leftCoordinateOfFloatingFoto);
-        // console.log("topCoordinateOfFloatingFoto", topCoordinateOfFloatingFoto);
 
         
-        const fotoSpread = fotoSpreads[activeFotoSpread]
+const fotoGoesInFrame = (fotoBook) => {
+        
+        const { 
+                leftCoordinateOfFloatingFoto, 
+                topCoordinateOfFloatingFoto, 
+                fotoSpread: { fotoSpreadTemplate } 
+        } = fotoBook
+        let coords = {}
 
-         const amountOfFotoFrames = fotoSpread.fotoSpreadTemplate.length
+        // for(let key in fotoSpreadTemplate) {
+        //         let padding =  fotoSpreadTemplate[key].padding ? fotoSpreadTemplate[key].padding : null
+        //         coords[key] = Array.from({ length: Object.keys(fotoSpreadTemplate[key].fotoFramesContainer.fotoFrames).length })
 
-         const amountOfAttachedFotos = fotoSpread.fotos.length
+        //         coordsOfFotoFrameContainer = {
+        //                 x0: fotoSpreadTemplate[key].left !== 0 ? (fotoSpreadTemplate[key].left + padding) : (fotoSpreadX0 + padding),
+        //                 x1: fotoSpreadTemplate[key].right !== 0 ? (fotoSpreadTemplate[key].right - padding) : (fotoSpreadX1 - padding),
+        //                 y0: fotoSpreadTemplate[key].top !== 0 ? (fotoSpreadTemplate[key].top + padding) : (fotoSpreadY0 + padding),
+        //                 y1: fotoSpreadTemplate[key].bottom !== 0 ? (fotoSpreadTemplate[key].bottom - padding) : (fotoSpreadY1 - padding)
+        //         }
 
-        const arrOfCoords = []
-
-        Array.from({ length: amountOfFotoFrames }).forEach((_, i) => {
-                arrOfCoords.push(calculateFotoSize(activeFotoTemplate, i))
+        //       coordsOfFotoFrameContainer.width = coordsOfFotoFrameContainer.x1 - coordsOfFotoFrameContainer.x0
+        //       coordsOfFotoFrameContainer.height = coordsOfFotoFrameContainer.y1 - coordsOfFotoFrameContainer.y0
+              
                 
-        })
 
 
-        let fotos = Array.from ({ length: amountOfFotoFrames })
+        //         coords[key] = coords[key].map((_, i) => {
 
-        // console.log("arrOfCoords", arrOfCoords)
-        if(fotoSpread.fotos.length > 0){
-                fotos = [...fotoSpread.fotos]
-                // console.log('fotos > 0 - ', fotos);
-        }
+        //               let width = convertPercentToDecimal(fotoSpreadTemplate[key].fotoFramesContainer.fotoFrames[i + 1].width) * coordsOfFotoFrameContainer.width
+        //               let height = convertPercentToDecimal(fotoSpreadTemplate[key].fotoFramesContainer.fotoFrames[i + 1].height) * coordsOfFotoFrameContainer.height
+
+                  
+        //         //       console.log('Width of FotoFrameContainer - ', coordsOfFotoFrameContainer.width)  
+        //         //       console.log('Width of Frame - ', width)  
+        //         //       console.log('Height of FotoFrameContainer - ', coordsOfFotoFrameContainer.height)  
+        //         //       console.log('Height of Frame - ', height)
+
+        //         //       let x0 = coordsOfFotoFrameContainer.x0
+        //         //       let x1 = coordsOfFotoFrameContainer.x0 + widthRelativeToFotoFrameContainer
+                      
+        //         //       return [ x0, x1  ]
       
+        //         })
 
-          // ОДИН фрейм
-        if (arrOfCoords.length === 1 && amountOfAttachedFotos > 0) {
-                fotoSpread.fotos = []
-        }
-        if(arrOfCoords.length === 1) {
                 
-                const [ coordinates ] = arrOfCoords
-                const { top, bottom, left, right, width, height } = coordinates
-
-                if( ((leftCoordinateOfFloatingFoto > left) && (leftCoordinateOfFloatingFoto < right)) 
-                        && ((topCoordinateOfFloatingFoto > top) && (topCoordinateOfFloatingFoto < bottom) )
-                ){
-                   fotos[0] = selectedFoto
-                } else {
-                        console.log("Not in target area")
-                }
-        }
 
 
+        // }
 
-        // ДВА фрейма
-        if(arrOfCoords.length === 2) {
-                const [ firstFrame, secondFrame ] = arrOfCoords
-                // console.log("firstFrame - ", firstFrame)
-                // console.log("secondFrame - ", secondFrame)
-
-                if( ((leftCoordinateOfFloatingFoto > firstFrame.left) && (leftCoordinateOfFloatingFoto < firstFrame.right)) 
-                        && ((topCoordinateOfFloatingFoto > firstFrame.top) && (topCoordinateOfFloatingFoto < firstFrame.bottom) )
-                ){
-
-                        fotos[0] = selectedFoto
-                } else if( ( (leftCoordinateOfFloatingFoto > secondFrame.left ) && (leftCoordinateOfFloatingFoto < secondFrame.right)) 
-                && ((topCoordinateOfFloatingFoto > secondFrame.top) && (topCoordinateOfFloatingFoto < secondFrame.bottom) )
-                ){
-         
-                        fotos[1] = selectedFoto  
-                }
-                else {
-                        console.log("Not in target area")
-                }
-        }
-
-        fotoSpread.fotos = fotos 
-        return fotoSpread
-
-};
-
-// store.subscribe(updateFotosOfActiveFotoSpread)
+        
+        
+        
+}
 
 
-// store.subscribe(updateFotosOfActiveFotoSpread)
-
-// const mapStateToProps = (state) => {
-//         console.log(state);
-//         return {
-//                 xAxisOffsetOfAnimatedFotospreadFoto: state.fotoBook.xAxisOffsetOfAnimatedFotospreadFoto,
-//                 yAxisOffsetOfAnimatedFotospreadFoto: state.fotoBook.yAxisOffsetOfAnimatedFotospreadFoto 
-//         }
-// } 
+const findActiveFotoSpread = (fotoBook) => {
+        return Object.assign({}, fotoBook, {fotoSpread: fotoBook.fotoSpreads[fotoBook.activeFotoSpread]})
+}  
 
 
 
-export default updateFotosOfActiveFotoSpread
+
+const updateFotosOfActiveFotoSpread = (...fns) => {
+        return fns.reduce(compose)
+}
+
+
+
+// export default updateFotosOfActiveFotoSpread(
+//         defineMainFramesOfFotoSpread,        
+//         findActiveFotoSpread    
+// )(state.fotoBook.fotoSpreads, state.fotoBook.activeFotoSpread)
+
+export default () => {
+        const { fotoBook } = fetchState()
+        return updateFotosOfActiveFotoSpread(
+                // fotoGoesInFrame,     
+                findActiveFotoSpread    
+        )(fotoBook)
+}
+
+
+
+// const updateFotosOfActiveFotoSpread = ({
+//         fotoSpreads, 
+//         activeFotoSpread, 
+//         selectedFoto, 
+//         activeFotoTemplate,
+//         topCoordinateOfFloatingFoto,
+//         leftCoordinateOfFloatingFoto,
+// }) => {
+        
+//         const { fotoSpreadTemplate, fotos, id } = findActiveFotoSpread(fotoSpreads, activeFotoSpread);
+
+
+
+
+// }
+
+// export default updateFotosOfActiveFotoSpread
 
 
 

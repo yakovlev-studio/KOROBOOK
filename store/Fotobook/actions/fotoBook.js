@@ -23,7 +23,6 @@ export const selectFotoFromGallery = (foto) => ({
 })
 
 export const activatePanresponderOnSelectedFoto = (setNativeEvent) => {
-
     return  {
         type: actionTypes.ACTIVATE_PANRESPONDER_ON_SELECTED_FOTO,
         nativeEvent: setNativeEvent,
@@ -43,9 +42,9 @@ export const updateTemplateOnFotospread = () => ({
     type: actionTypes.UPDATE_TEMPLATE_ON_FOTOSPREAD
 })
 
-export const updateFotoSpreadFotos = () => {
+export const updateFotosOfFotospread = () => {
     return {
-        type: actionTypes.UPDATE_FOTOSPREAD_FOTOS
+        type: actionTypes.UPDATE_FOTOS_OF_FOTOSPREAD
     }
 } 
 

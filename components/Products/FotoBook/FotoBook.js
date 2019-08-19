@@ -1,35 +1,37 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { 
     View,  
     SafeAreaView,
     Animated,
     PanResponder,
     Easing
-} from 'react-native'
+} from 'react-native';
 
 // Redux
-import { connect } from 'react-redux'
-import * as actions from 'korobook/store/Fotobook/actions'
+import { connect } from 'react-redux';
+import * as actions from 'korobook/store/Fotobook/actions';
 
 // Components
-import FotoSpreadsSlider from './FotoSpreadsSlider/FotoSpreadsSlider'
-import ShuffleButton from './ShuffleButton/ShuffleButton'
-import FotoGalleryButtons from './FotoGallery/FotoGalleryButtons/FotoGalleryButtons'
-import FotoGallery from './FotoGallery/FotoGallery'
+import FotoSpreadsSlider from './FotoSpreadsSlider/FotoSpreadsSlider';
+import ShuffleButton from './ShuffleButton/ShuffleButton';
+import FotoGalleryButtons from './FotoGallery/FotoGalleryButtons/FotoGalleryButtons';
+import FotoGallery from './FotoGallery/FotoGallery';
 
 // Styles
-import styles from './FotoBook.style'
+import styles from './FotoBook.style';
 
+// import coords from 'korobook/utils/fotoBook/calculateCoordinatesOfFrames';
+// import templates from 'korobook/static/fotoSpreadTemplates';
 
 
 class FotoBook extends Component {
 
     componentDidMount(){
-        console.log(this.props.fotoBookState)
+        // console.log(coords)
     }
-    componentDidUpdate(){
-        console.log(this.props.fotoBookState)
-    }
+    // componentDidUpdate(){
+    //     console.log(this.props.fotoBookState)
+    // }
   
     floatingFotoSpringValue = new Animated.Value(1)
     fade = new Animated.Value(1)
@@ -116,7 +118,7 @@ class FotoBook extends Component {
        
         onPanResponderRelease: () => {
             this.floatingFotoSpringValue.setValue(0)
-            this.props.handleUpdateFotoSpreadFotos()
+            this.props.handleUpdateFotosOfFotospread()
             this.x0 = 0
             this.y0 = 0
         }
@@ -160,7 +162,7 @@ const mapStateToProps = ({ fotoBook }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    handleUpdateFotoSpreadFotos: () => dispatch(actions.updateFotoSpreadFotos()),
+    handleUpdateFotosOfFotospread: () => dispatch(actions.updateFotosOfFotospread()),
     handleSelectFotoFromGallery: foto => dispatch(actions.selectFotoFromGallery(foto)),
     handleActivatePanresponderOnSelectedFoto: e => dispatch(actions.activatePanresponderOnSelectedFoto(e)),
     handleUpdateFloatingfotoCoordinates: (coords) => dispatch(actions.updateFloatingfotoCoordinates(coords))

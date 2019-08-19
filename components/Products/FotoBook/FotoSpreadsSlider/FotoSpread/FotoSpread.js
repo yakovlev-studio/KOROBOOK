@@ -39,7 +39,7 @@ export class FotoSpread extends Component {
     }
 
     componentDidMount(){
-        console.log(templates[this.props.activeFotoTemplate])
+        // console.log(templates[this.props.activeFotoTemplate])
     }
     // componentDidUpdate(){
     //     console.log(`UPDATE: amountOfFramesOnFirstHalfOfFotoSpread - ${this.state.amountOfFramesOnFirstHalfOfFotoSpread}`)
