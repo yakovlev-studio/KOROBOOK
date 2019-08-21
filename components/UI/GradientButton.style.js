@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "korobook/App.style";
+import colors from "korobook/constants/colors";
 
 export default StyleSheet.create({
   linearGradient: {

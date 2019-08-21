@@ -5,7 +5,7 @@ import SLIDER_ENTRIES from "korobook/static/LaunchScreenSliderEntries";
 import { sliderWidth, itemWidth } from "./LaunchScreenSliderEntry/LaunchScreenSliderEntry.style";
 import LaunchScreenSliderEntry from "./LaunchScreenSliderEntry/LaunchScreenSliderEntry";
 import styles from "./LaunchScreenSlider.style";
-import { colors } from "korobook/App.style";
+import colors from "korobook/constants/colors";
 
 const LaunchScreenSlider = () => {
   const [sliderActiveSlide, setSliderActiveSlide] = useState(0);
@@ -34,7 +34,7 @@ const LaunchScreenSlider = () => {
         dotsLength={SLIDER_ENTRIES.length}
         activeDotIndex={sliderActiveSlide}
         containerStyle={styles.paginationContainer}
-        dotColor={colors.mediumpurple}
+        dotColor={colors.IOSprimary}
         dotStyle={styles.paginationDot}
         inactiveDotColor={colors.black}
         inactiveDotOpacity={0.2}

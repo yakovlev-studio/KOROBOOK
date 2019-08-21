@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "./GradientButton.style";
-import { colors } from "korobook/App.style";
+import colors from "korobook/constants/colors";
 
 const GradientButton = ({ customStyles = {}, title = "" }) => {
   return (
@@ -11,7 +11,7 @@ const GradientButton = ({ customStyles = {}, title = "" }) => {
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1.0, y: 0 }}
-          colors={colors.buttonGradient}
+          colors={colors.gradient}
           style={[styles.linearGradient, customStyles.customButtonSize]}
         >
           <Text style={[styles.textButton, customStyles.sizeOfTitleOfShuffleButton]}>{title}</Text>

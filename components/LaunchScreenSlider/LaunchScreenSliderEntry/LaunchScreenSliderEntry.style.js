@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { colors } from "korobook/App.style";
+import colors from "korobook/constants/colors";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get("window");
 

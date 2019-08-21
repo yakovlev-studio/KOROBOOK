@@ -1,11 +1,9 @@
 import { StyleSheet } from "react-native";
-import { colors } from "korobook/App.style";
+import colors from "korobook/constants/colors";
 
 export default StyleSheet.create({
   carouselContainer: {
     paddingVertical: 20
-    // borderWidth: 2,
-    // borderColor: "black"
   },
   title: {
     paddingHorizontal: 15,
