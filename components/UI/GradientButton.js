@@ -4,10 +4,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import styles from "./GradientButton.style";
 import colors from "korobook/constants/colors";
 
-const GradientButton = ({ customStyles = {}, title = "" }) => {
+const GradientButton = ({ onNavigate = f => f, customStyles = {}, title = "" }) => {
   return (
     <View style={styles.buttonContainer}>
-      <TouchableHighlight style={[styles.button, customStyles.customButtonSize]}>
+      <TouchableHighlight
+        onPress={onNavigate}
+        style={[styles.button, customStyles.customButtonSize]}
+      >
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1.0, y: 0 }}

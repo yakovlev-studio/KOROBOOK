@@ -1,14 +1,10 @@
 import React from "react";
 import { View } from "react-native";
-import LaunchScreen from "korobook/screens/LaunchScreen/LaunchScreen";
 import styles from "./App.style";
+import KorobookNavigator from "./navigation/KorobookNavigator";
 
 const App = () => {
-  return (
-    <View style={styles.container}>
-      <LaunchScreen />
-    </View>
-  );
+  return <KorobookNavigator />;
 };
 
 export default App;
