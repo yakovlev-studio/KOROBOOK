@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
-import SLIDER_ENTRIES from "korobook/static/LaunchScreenSliderEntries";
+import SLIDER_ENTRIES from "korobook/data/LaunchScreenSliderEntries";
 import { sliderWidth, itemWidth } from "./LaunchScreenSliderEntry/LaunchScreenSliderEntry.style";
 import LaunchScreenSliderEntry from "./LaunchScreenSliderEntry/LaunchScreenSliderEntry";
 import styles from "./LaunchScreenSlider.style";
@@ -24,8 +24,6 @@ const LaunchScreenSlider = () => {
         sliderWidth={sliderWidth}
         itemWidth={itemWidth}
         firstItem={0}
-        containerCustomStyle={styles.slider}
-        contentContainerCustomStyle={styles.sliderContentContainer}
         loop
         loopClonesPerSide={2}
         onSnapToItem={index => setSliderActiveSlide(index)}

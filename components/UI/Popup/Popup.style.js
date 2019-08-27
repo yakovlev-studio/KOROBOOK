@@ -2,22 +2,16 @@ import { StyleSheet } from "react-native";
 import colors from "korobook/constants/colors";
 
 export default StyleSheet.create({
-  linearGradient: {
+  safeArea: {
+    flex: 1
+  },
+  contentWrapper: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 25
+    backgroundColor: "rgba(0,0,0, 0.3)"
   },
-  buttonContainer: {
-    alignItems: "center",
+  modalWrapper: {
     flex: 1
-  },
-  button: {
-    height: 50,
-    width: 250
-  },
-  textButton: {
-    color: colors.white,
-    fontWeight: "600"
   }
 });

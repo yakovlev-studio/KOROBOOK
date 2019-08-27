@@ -9,7 +9,7 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: "transparent",
     color: colors.black,
-    fontSize: 60,
+    fontSize: 56,
     fontWeight: "bold",
     textAlign: "center"
   },
@@ -18,17 +18,11 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: "transparent",
     color: colors.black,
-    fontSize: 26,
+    fontSize: 24,
     textAlign: "center"
   },
-  slider: {
-    marginTop: 15
-  },
-  sliderContentContainer: {
-    paddingVertical: 30
-  },
   paginationContainer: {
-    paddingVertical: 8
+    paddingBottom: 16
   },
   paginationDot: {
     width: 10,

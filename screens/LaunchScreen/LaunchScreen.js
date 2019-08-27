@@ -1,7 +1,7 @@
 import React from "react";
 import { View, SafeAreaView, Image, Text } from "react-native";
 import Slider from "korobook/components/LaunchScreenSlider/LaunchScreenSlider";
-import GradientButton from "korobook/components/UI/GradientButton";
+import GradientButton from "korobook/components/UI/GradientButton/GradientButton";
 import styles from "./LaunchScreen.style";
 
 const LaunchScreen = ({ navigation }) => {
@@ -17,7 +17,7 @@ const LaunchScreen = ({ navigation }) => {
 
         <Slider />
 
-        <GradientButton onNavigate={navigateHandler} title="Создать фотокнигу" />
+        <GradientButton onPressed={navigateHandler} title="Создать фотокнигу" />
       </View>
     </SafeAreaView>
   );
@@ -28,7 +28,8 @@ LaunchScreen.navigationOptions = () => ({
     elevation: 0,
     shadowOpacity: 0,
     borderBottomWidth: 0
-  }
+  },
+  headerBackTitle: "Назад"
 });
 
 export default LaunchScreen;

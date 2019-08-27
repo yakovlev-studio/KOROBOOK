@@ -1,13 +1,35 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Platform, TouchableOpacity, SafeAreaView } from "react-native";
+import Categories from "korobook/components/Categories/Categories";
+import { EvilIcons } from "@expo/vector-icons";
+import colors from "../../constants/colors";
 import styles from "./CategoriesScreen.style";
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
+  const navigateToCategoryHandler = (category = "") => {
+    return navigation.navigate({ routeName: `${category}` });
+  };
+
   return (
-    <View style={styles.screen}>
-      <Text>CategoriesScreen</Text>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <Categories onNavigateToCategory={navigateToCategoryHandler} />
+    </SafeAreaView>
   );
 };
+
+const iconColor = Platform.OS === "android" ? colors.white : colors.IOSprimary;
+
+CategoriesScreen.navigationOptions = () => ({
+  title: "Продукция",
+  headerBackTitle: "Назад",
+  headerRightContainerStyle: {
+    paddingRight: 20
+  },
+  headerRight: (
+    <TouchableOpacity onPress={() => alert("User")}>
+      <EvilIcons name="user" size={34} color={iconColor} />
+    </TouchableOpacity>
+  )
+});
 
 export default CategoriesScreen;

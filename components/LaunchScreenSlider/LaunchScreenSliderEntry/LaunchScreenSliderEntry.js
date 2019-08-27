@@ -12,15 +12,4 @@ const LaunchScreenSliderEntry = ({ data }) => {
   );
 };
 
-LaunchScreenSliderEntry.propTypes = {
-  data: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string
-  })
-};
-
-LaunchScreenSliderEntry.defaultProps = {
-  data: { title: "", subtitle: "" }
-};
-
 export default LaunchScreenSliderEntry;

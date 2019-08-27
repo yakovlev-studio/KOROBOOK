@@ -1,6 +1,7 @@
 const colors = {
   black: "#1a1917",
-  gray: "#888888",
+  grey: "#888888",
+  lightGrey: "#DADADA",
   white: "#FFF",
   IOSprimary: "#A05BE5",
   Androidprimary: "#A355F2",
