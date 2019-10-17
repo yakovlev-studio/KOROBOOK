@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { View, ScrollView, SafeAreaView, Text } from "react-native";
 import MenuSlider from "react-native-snap-carousel";
-import Category from "./Category/Category";
+import Category from "./Category/Category.component";
 import styles from "./Categories.style";
 import { CATEGORIES } from "korobook/data/Categories";
 

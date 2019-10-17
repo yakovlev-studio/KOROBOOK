@@ -1,7 +1,7 @@
 import React from "react";
 import { View, SafeAreaView, Image, Text } from "react-native";
-import Slider from "korobook/components/LaunchScreenSlider/LaunchScreenSlider";
-import GradientButton from "korobook/components/UI/GradientButton/GradientButton";
+import Slider from "korobook/components/LaunchScreenSlider/LaunchScreenSlider.component";
+import GradientButton from "korobook/components/UI/GradientButton/GradientButton.component";
 import styles from "./LaunchScreen.style";
 
 const LaunchScreen = ({ navigation }) => {

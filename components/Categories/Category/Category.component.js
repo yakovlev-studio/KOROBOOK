@@ -7,7 +7,7 @@ import colors from "korobook/constants/colors";
 
 const Category = ({ data = {}, activeCategoryIndex = 0, onNavigateToCategory = f => f }) => {
   let category = null;
-  console.log(data);
+  // console.log(data);
 
   if (CATEGORIES[activeCategoryIndex].title === data.title) {
     category = (

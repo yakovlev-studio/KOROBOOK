@@ -4,15 +4,15 @@ import styles from "./Manual.style";
 import colors from "korobook/constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { INSTRUCTIONS } from "korobook/data/ModalManual";
-import GradientButton from "korobook/components/UI/GradientButton/GradientButton";
+import GradientButton from "korobook/components/UI/GradientButton/GradientButton.component";
 
 const Manual = ({ toggleModalVisibility = f => f }) => {
   const closeIconName = Platform.OS === "android" ? "md-close-circle" : "ios-close-circle";
-  const closeIconColor = Platform.OS === "android" ? colors.Androidprimary : colors.lightGrey;
+  const closeIconColor = Platform.OS === "android" ? colors.primary : colors.lightGrey;
 
   const infoIconName =
     Platform.OS === "android" ? "md-information-circle" : "ios-information-circle-outline";
-  const infoIconColor = Platform.OS === "android" ? colors.white : colors.IOSprimary;
+  const infoIconColor = Platform.OS === "android" ? colors.white : colors.primary;
   const infoIconBackgroundColor = Platform.OS === "android" ? colors.white : "";
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform, TouchableOpacity, SafeAreaView } from "react-native";
-import Categories from "korobook/components/Categories/Categories";
+import Categories from "korobook/components/Categories/Categories.component";
 import { EvilIcons } from "@expo/vector-icons";
 import colors from "../../constants/colors";
 import styles from "./CategoriesScreen.style";
@@ -17,7 +17,7 @@ const CategoriesScreen = ({ navigation }) => {
   );
 };
 
-const iconColor = Platform.OS === "android" ? colors.white : colors.IOSprimary;
+const iconColor = Platform.OS === "android" ? colors.white : colors.primary;
 
 CategoriesScreen.navigationOptions = () => ({
   title: "Продукция",
