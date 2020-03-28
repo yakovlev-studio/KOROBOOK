@@ -38,7 +38,7 @@ export class FotoSpreadTemplate {
     });
 
     console.log("==========FOTOSPREAD=============");
-    console.log(fotoSpread);
+    // console.log(fotoSpread);
     console.log("==========FOTOSPREAD=============");
     this._fotoSpread = fotoSpread;
   }
