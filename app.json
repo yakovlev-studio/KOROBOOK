@@ -18,10 +18,14 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yakovlevstudio.korobook",
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "permissions": ["READ_EXTERNAL_STORAGE"]
+      "permissions": ["READ_EXTERNAL_STORAGE"],
+      "package": "com.yakovlevstudio.korobook",
+      "versionCode": 1
     }
   }
 }
